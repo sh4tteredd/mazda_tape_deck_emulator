@@ -1,43 +1,37 @@
-#Mazda tape deck emulator
+# Mazda Tape Deck Emulator
 
-Tape Deck Emulator for Mazda 6 up to 2006 year (with MD/TAPE button). After connect this device to tape connector audio system will swich device (via TAPE/MD button) to "Tape mode" and you can use tape audio signals for playing external audio sources.
-This emulator well suited for implement AUX functionality (of course instead of tape). Also emulator allow control plaing if you will use 4-pin audio jact.
+This project provides a Tape Deck Emulator designed for the Mazda 6 (up to the 2006 model year) that features a "MD/TAPE" button. By connecting this device to the tape connector, the car's audio system will switch to "Tape mode" when the TAPE/MD button is pressed, allowing you to use the tape audio signals for playing external audio sources. It is an excellent way to add AUX functionality to your car, replacing the original tape feature. Additionally, this emulator provides playback control capabilities if you use a 4-pin audio jack.
 
-##Software
-Project implemented in Arduino environment and provide as "Arduino sketch". 
+---
 
-Description on protocol found here [http:\\\\nikosapi.org](http://nikosapi.org/w/index.php/Mazda_Entertainment_System_-_Bus_Protocol). Thanks to Nikosapi!
+## Software
+The emulator is implemented in the Arduino environment and provided as an "Arduino sketch." For more details about the protocol, refer to the [Mazda Entertainment System Bus Protocol](http://nikosapi.org/w/index.php/Mazda_Entertainment_System_-_Bus_Protocol), with special thanks to Nikosapi for the documentation.
 
+---
 
-##Hardware
+## Hardware
+The Tape Deck Emulator uses the [Arduino Pro Micro 5V](https://www.aliexpress.com/item/1005006645661865.html?spm=a2g0o.cart.0.0.340a18fcK8edQM&mp=1) as the hardware platform. The Arduino Pro Micro is popular, easy to program, and readily available in electronic stores.
 
-Implementation the tape emulator based on the [Arduino micro pro 5V](https://www.sparkfun.com/products/11098) hardware. This device is popular and available in any electrical store also easy to programming.
+### Connections
+- **Data Bus Pin**: The emulator connects to the audio system's data bus via one pin, which is configured as both input and output, depending on whether a command is being sent or received.
+- **Playback Control Pin**: A second pin is used for controlling playback on your phone, similar to a single-button headset. This functionality allows start/stop and track-switching features. If you are using a 3.5mm audio jack without a microphone pin, you do not need to connect this pin.
+  
+### Power Supply
+The device requires a 5V power supply. Unfortunately, the Mazda audio system does not provide 5V power, so you will need to use an external regulator. Here are some options:
+- **Voltage Regulator Board**: Use a pre-built voltage regulator board, such as one with an LM7805 (or similar) voltage regulator chip (e.g., L7805, 78L05, REG1117-5, AMS1117-5). https://www.aliexpress.com/item/1005006486270630.html?spm=a2g0o.cart.0.0.340a18fcK8edQM&mp=1
 
-Device use one pin for connecting to audio system data bus, this pin used as I\O and reconfigured during send command.
+### Audio Jack Support
+The device supports a 4-pin audio jack, providing the additional feature of playback control. If you connect a microphone to the MIC pin, you can also set up a hands-free feature for your car.
 
-Second pin use for control playing on phone (like single button on headset). This functionality allow control playing (start\stop and switch next track). If you use Jack3.5 whithout the MIC pin juct don't connect this pin.
-
-The device used 5V for powered. Unfortunately audio system doesn't provide 5V. Easy way to get it this use readymade board with LM7805 voltage regulator(analogue L7805, 78L05, REG1117-5, AMS1117-5 ) or simular boards. Also you can use board from "car cigarette lighter to USB" device. I am using 5v part of the __"MB102 Breadboard Power Supply Module 3.3V 5V"__ board, just google it.
-
-Device allow use 4-pin audio jack in this case you get play control funtionality. Also you can connect microphone to MIC pin and organize Handsfree in your car.
-
-Connecting diagram:
-
+### Connection Diagram
 ![Mazda tape deck emulator schematics](https://github.com/Krasutski/mazda_tape_deck_emulator/blob/master/doc/mazda_tape_emulator_jack_3_5_connecting.png)
 
-###Compatibility:
-Solution shold be work on all devices with button "TAPE\MD".  
-Tested:
- * Mazda 6 2005 3.0L
+---
 
+## Compatibility
+This solution is compatible with all Mazda models equipped with a "TAPE/MD" button. 
 
-  
-  
-  
-If you have any question let me know.
+**Tested on:**
+- not tested yet
 
-
-Best Regards,  
-Denis Krasutski (BLR)  
-dkrasutski@gmail.com
-
+---
